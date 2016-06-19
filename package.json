@@ -1,0 +1,21 @@
+{
+  "name": "frontendlinks",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "meteor-node-stubs": "^0.2.3",
+    "react-addons-pure-render-mixin": "^15.1.0",
+    "react-paginate": "^1.0.5",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.5.2",
+    "redux-form": "^5.2.4",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
+    "rupture": "^0.6.1"
+  }
+}

@@ -1,0 +1,72 @@
+$red = #ff4530;
+
+*
+  box-sizing border-box
+
+body
+  background white
+
+#header
+  border-bottom solid 1px #ccc
+
+.home
+  width 400px
+  margin 0 auto 0
+
+  form
+    width 100%
+
+.intro
+  text-align center
+  font-size 18px
+  line-height 1.3em
+
+.server-error
+  color $red
+  text-align center
+  font-size 18px
+  line-height 1.3em
+
+.notifier
+  display flex
+  justify-content center
+  align-items center
+  height 150px
+
+.input-group.input-group
+  width 100%
+  position relative
+  label
+    display block
+    height 17px
+  input
+    display block
+    padding 18px
+    width 100%
+
+  .error
+    position absolute
+    background red
+    padding 10px
+    border-radius 5px
+    color white
+    left 100%
+    margin-left 15px
+    top 22px
+    width 50%
+
+button[type="submit"]
+  border-radius 5px
+  border 1px solid $red
+  margin-top 20px
+  color $red
+  outline 0
+  font-size 12px
+  padding 10px 0
+  text-transform uppercase
+  background white
+  width 100%
+  transition 0.2s
+  &:hover
+    color white
+    background $red
