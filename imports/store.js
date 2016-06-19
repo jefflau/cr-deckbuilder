@@ -5,6 +5,7 @@ import { Tracker } from 'meteor/tracker';
 
 import Todos from './api/collections/todos';
 import Cards from './api/collections/cards';
+import Decks from './api/collections/decks';
 
 //redux middleware
 import createLogger from 'redux-logger';
@@ -26,7 +27,12 @@ Tracker.autorun(() => {
   store.dispatch({
     type: 'SET_CARDS',
     cards: Cards.find().fetch()
-  })
+  });
+
+  store.dispatch({
+    type: 'SET_DECKS',
+    decks: Decks.find().fetch()
+  });
 });
 
 export default store;

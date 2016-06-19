@@ -11,9 +11,22 @@ class Home extends Component {
   componentWillMount() {
     this.props.subscribe('allTodos');
     this.props.subscribe('allCards');
+    this.props.subscribe('allDecks');
   }
   render(){
-    let { form, submitHandler, serverError, todos, cards } = this.props;
+    let { form, submitHandler, serverError, todos, cards, decks } = this.props;
+    let cardsInDeck = decks.map((deck, i )=> {
+      let deckCards = deck.cards.map((name, i)=> {
+        let cardObj = cards.filter((card, i )=> name === card.idName);
+        let cardInfo = cardObj[0];
+        return (
+          <li className="card" key={i}> {cardInfo.name}</li>
+        )
+      });
+      return (
+        <ul key={i}> {deckCards}</ul>
+      )
+    })
     return (
       <div className="home">
         <div className="notifier">
@@ -26,6 +39,9 @@ class Home extends Component {
         </div>
         <AddTodoForm onSubmit={submitHandler.bind(null, form)} />
 
+        <ul className="decks">
+          {cardsInDeck}
+        </ul>
         <ul className="cards">
           {cards.map((card, i )=> <li className="card" key={i}><img src={card.image} />{card.name}</li>)}
         </ul>
@@ -40,6 +56,7 @@ function mapStateToProps(state){
     serverError: state.serverError,
     todos: state.todos,
     cards: state.cards,
+    decks: state.decks,
     form: state.form.addTodoForm
   }
 }
