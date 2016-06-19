@@ -10,9 +10,10 @@ import  { createTodo } from '../../actions/actions';
 class Home extends Component {
   componentWillMount() {
     this.props.subscribe('allTodos');
+    this.props.subscribe('allCards');
   }
   render(){
-    let { form, submitHandler, serverError, todos } = this.props;
+    let { form, submitHandler, serverError, todos, cards } = this.props;
     return (
       <div className="home">
         <div className="notifier">
@@ -20,8 +21,14 @@ class Home extends Component {
           <ul>
             {todos.map((todo, i )=> <li key={i}>{todo.text}</li>)}
           </ul>
+
+
         </div>
         <AddTodoForm onSubmit={submitHandler.bind(null, form)} />
+
+        <ul>
+          {cards.map((card, i )=> <li key={i}>{card.name}</li>)}
+        </ul>
       </div>
     )
   }
@@ -32,6 +39,7 @@ function mapStateToProps(state){
   return {
     serverError: state.serverError,
     todos: state.todos,
+    cards: state.cards,
     form: state.form.addTodoForm
   }
 }

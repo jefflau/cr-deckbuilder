@@ -1,4 +1,4 @@
-import Cards from '../imports/collections/cards';
+import Cards from '../imports/api/collections/cards';
 import { httpPromise } from '../imports/helpers/helperPromises';
 
 console.log('fixtures')
