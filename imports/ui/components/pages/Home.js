@@ -26,8 +26,8 @@ class Home extends Component {
         </div>
         <AddTodoForm onSubmit={submitHandler.bind(null, form)} />
 
-        <ul>
-          {cards.map((card, i )=> <li key={i}>{card.name}</li>)}
+        <ul className="cards">
+          {cards.map((card, i )=> <li className="card" key={i}><img src={card.image} />{card.name}</li>)}
         </ul>
       </div>
     )

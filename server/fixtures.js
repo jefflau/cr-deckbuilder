@@ -1,20 +1,16 @@
 import Cards from '../imports/api/collections/cards';
 import { httpPromise } from '../imports/helpers/helperPromises';
 
-console.log('fixtures')
-
 if(Cards.find().count() === 0){
-  console.log('here1')
-  //go get cards from API
+  //Get all cards
   let url = "http://www.clashapi.xyz/api/cards";
-  let options = {
 
-  };
-  let cardsPromise = httpPromise('GET', url, options);
-
-  cardsPromise.then(res=>{
+  httpPromise('GET', url, {}).then(res=>{
     res.data.forEach((card)=>{
-      Cards.insert(card);
+      Cards.insert({
+        ...card,
+        image: `http://www.clashapi.xyz/images/cards/${card.idName}.png`
+      });
     })
   }).catch(err => console.log(err))
 
