@@ -3,7 +3,6 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 import { Tracker } from 'meteor/tracker';
 
-import Todos from './api/collections/todos';
 import Cards from './api/collections/cards';
 import Decks from './api/collections/decks';
 
@@ -19,10 +18,6 @@ const middleware = [reduxThunk, logger];
 const store = createStore(rootReducer, {}, applyMiddleware(...middleware));
 
 Tracker.autorun(() => {
-  store.dispatch({
-    type: 'SET_TODOS',
-    todos: Todos.find().fetch()
-  });
 
   store.dispatch({
     type: 'SET_CARDS',

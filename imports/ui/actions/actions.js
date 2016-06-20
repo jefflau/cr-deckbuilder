@@ -1,10 +1,9 @@
 import { callMethodPromise } from '../../helpers/helperPromises';
-
 import { Meteor } from 'meteor/meteor';
 
-export function createTodo(text){
+export function createDeck(text){
   return dispatch => {
-    callMethodPromise('addTodo', text)
+    callMethodPromise('createDeck', text)
       .then(data=>console.log(data))
       .catch(error=>{
         dispatch({

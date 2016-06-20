@@ -1,7 +1,7 @@
-import Todos, { createTodo } from './collections/todos';
+import Decks, { insertDeck } from './collections/decks';
 
 Meteor.methods({
-  addTodo(text){
+  createDeck(deck, userId){
     if (this.isSimulation) {
       //server only method returns out on client
       return false;
@@ -10,6 +10,6 @@ Meteor.methods({
       throw new Meteor.Error('text missing', 'Cannot submit an empty message');
     }
 
-    return createTodo(text);
+    return insertDeck(deck, userId);
   }
 });

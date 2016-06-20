@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export default () => {
   return (
     <header>
-      <h1>React Redux Meteor Boilerplate</h1>
+      <h1>Clash Royale Deck Builder</h1>
     </header>
   )
 }
