@@ -19,11 +19,9 @@ if(Cards.find().count() === 0){
     if(Decks.find().count() < 1) {
       Decks.insert({
         "name": "Royal Giant OP",
-        "cards": ['princess', "barbarians", "archers"],
-        "averageElixirCost": 3.5
+        "cards": ['princess', "barbarians", "minion-horde", "royal-giant", "elixir-collector", "spear-goblins", "zap", "fireball"],
+        "averageElixirCost": 4.0
       });
     }
   }).catch(err => console.log(err))
 }
-
-

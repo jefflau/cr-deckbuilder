@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { connect } from 'react-redux';
+import Deck from '../deck';
 
 import SubscribeComponent from '../helpers/SubscribeComponent';;
 import  { createDeck } from '../../actions/actions';
@@ -17,12 +19,18 @@ class Home extends Component {
       let deckCards = deck.cards.map((name, i)=> {
         let cardObj = cards.filter((card, i )=> name === card.idName);
         let cardInfo = cardObj[0];
+        console.log('cardinfo', cardInfo);
         return (
-          <li className="card" key={i}> {cardInfo.name}</li>
+
+          <li className="card" key={i}>
+            <img src={cardInfo.image} />
+            <div className="cardName">{cardInfo.name}</div>
+          </li>
         )
       });
+      console.log(deckCards);
       return (
-        <ul key={i}> {deckCards}</ul>
+        <ul className= "currentDeck" key={i}> {deckCards}</ul>
       )
     })
     return (
@@ -30,13 +38,10 @@ class Home extends Component {
         <div className="notifier">
           {serverError.error ? <div className="server-error">{serverError.error.reason}</div> : "" }
         </div>
-
-        <ul className="decks">
-          {cardsInDeck}
-        </ul>
-        <ul className="cards">
+        <div>{cardsInDeck}</div>
+        {/*<ul className="cards">
           {cards.map((card, i )=> <li className="card" key={i}><img src={card.image} />{card.name}</li>)}
-        </ul>
+        </ul>*/}
       </div>
     )
   }
