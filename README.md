@@ -1,4 +1,4 @@
-# React Redux Meteor Boilerplate
+# Clash Royale Deck Builder
 
 ##Installation
 
