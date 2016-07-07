@@ -17,32 +17,37 @@ class Home extends Component {
   }
   render(){
     let { form, submitHandler, serverError, todos, cards, decks } = this.props;
-    let remainingCards;
-    let cardsInDeck = decks.map((deck, i )=> {
-      let deckCards = deck.cards.map((name, i)=> {
+
+    let currentDeckIndex = 0, //make dynamic later
+        currentDeck = [],
+        remainingCards = [];
+
+    if(cards.length > 0 && decks.length > 0){
+      currentDeck = decks[currentDeckIndex].cards.map((name, i)=> {
         let cardObj = cards.filter((card, i )=> name === card.idName);
         let cardInfo = cardObj[0];
         return (
           <Card cardInfo={cardInfo} i={i}/>
         )
       });
+
       remainingCards = cards.filter((card, i) => {
-        let array = deck.cards.filter((name, i)=> {
+        let array = decks[currentDeckIndex].cards.filter((name, i)=> {
           return name === card.idName
         })
         return array.length === 0
       })
-      return (
-        <ul className= "currentDeck" key={i}> {deckCards}</ul>
-      )
-    });
+    }
 
     return (
       <div className="home">
         <div className="notifier">
           {serverError.error ? <div className="server-error">{serverError.error.reason}</div> : "" }
         </div>
-        <div>{cardsInDeck}</div>
+        <ul className= "currentDeck">
+          {currentDeck}
+        </ul>
+        <h2>Remaining Cards</h2>
         <CardLibrary cards={remainingCards}/>
       </div>
     )
