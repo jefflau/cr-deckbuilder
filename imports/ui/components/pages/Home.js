@@ -21,12 +21,10 @@ class Home extends Component {
       let deckCards = deck.cards.map((name, i)=> {
         let cardObj = cards.filter((card, i )=> name === card.idName);
         let cardInfo = cardObj[0];
-        console.log('cardinfo', cardInfo);
         return (
           <Card cardInfo={cardInfo} i={i}/>
         )
       });
-      console.log(deckCards);
       return (
         <ul className= "currentDeck" key={i}> {deckCards}</ul>
       )
@@ -38,9 +36,6 @@ class Home extends Component {
         </div>
         <div>{cardsInDeck}</div>
         <CardLibrary cards={cards}/>
-        {/*<ul className="cards">
-          {cards.map((card, i )=> <li className="card" key={i}><img src={card.image} />{card.name}</li>)}
-        </ul>*/}
       </div>
     )
   }
