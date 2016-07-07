@@ -19,20 +19,20 @@ class Home extends Component {
     let { form, submitHandler, serverError, todos, cards, decks } = this.props;
 
     let currentDeckIndex = 0, //make dynamic later
-        currentDeck = [],
+        currentDeck = null,
         remainingCards = [];
 
     if(cards.length > 0 && decks.length > 0){
-      currentDeck = decks[currentDeckIndex].cards.map((name, i)=> {
+      currentDeck = decks[currentDeckIndex].cards.map((name, index)=> {
         let cardObj = cards.filter((card, i )=> name === card.idName);
         let cardInfo = cardObj[0];
         return (
-          <Card cardInfo={cardInfo} i={i}/>
+          <Card cardInfo={cardInfo} key={cardInfo.idName}/>
         )
       });
 
-      remainingCards = cards.filter((card, i) => {
-        let array = decks[currentDeckIndex].cards.filter((name, i)=> {
+      remainingCards = cards.filter((card) => {
+        let array = decks[currentDeckIndex].cards.filter((name)=> {
           return name === card.idName
         })
         return array.length === 0
@@ -48,7 +48,7 @@ class Home extends Component {
           {currentDeck}
         </ul>
         <h2>Remaining Cards</h2>
-        <CardLibrary cards={remainingCards}/>
+        {<CardLibrary cards={remainingCards}/>}
       </div>
     )
   }

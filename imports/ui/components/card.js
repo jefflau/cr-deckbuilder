@@ -2,9 +2,9 @@ import React from 'react';
 
 let card = React.createClass({
   render: function () {
-    let {cardInfo, i} = this.props;
+    let {cardInfo} = this.props;
     return (
-      <li className="card" key={i}>
+      <li className="card">
         <img src={cardInfo.image} />
         <div className="cardName">{cardInfo.name}</div>
       </li>
